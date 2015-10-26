@@ -10,7 +10,11 @@ import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText first, last, email, password, confirmPassword;
@@ -18,8 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
-
-
         //comment
         setContentView(R.layout.activity_login);
         first = (EditText) findViewById(R.id.editFirst);
@@ -37,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void attemptLogin(){
         Log.d("a", "b");
-        Firebase myFirebaseRef = new Firebase("https://cse110clicker.firebaseio.com/");
 
         if(!password.getText().toString().equals(confirmPassword.getText().toString())){
             return;
@@ -46,17 +47,19 @@ public class LoginActivity extends AppCompatActivity {
         String spassword = password.getText().toString();
         String sfirst = first.getText().toString();
         String slast = last.getText().toString();
-        /*
-        myFirebaseRef.createUser("bobtony@firebase.com", "correcthorsebatterystaple", new Firebase.ValueResultHandler<Map<String, Object>>() {
+
+        Firebase ref = new Firebase("https://cse110clicker.firebaseio.com");
+        ref.createUser(semail, spassword, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
                 System.out.println("Successfully created user account with uid: " + result.get("uid"));
             }
+
             @Override
             public void onError(FirebaseError firebaseError) {
                 // there was an error
+                n
             }
         });
-        */
     }
 }
