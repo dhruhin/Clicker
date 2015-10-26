@@ -40,7 +40,13 @@ public class LoginActivity extends AppCompatActivity {
     private void attemptLogin(){
         Log.d("a", "b");
 
+        if(password.getText().toString().equals("")){
+            //Password is blank
+            return;
+        }
+
         if(!password.getText().toString().equals(confirmPassword.getText().toString())){
+            //Passwords do not match
             return;
         }
         String semail = email.getText().toString();
@@ -58,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onError(FirebaseError firebaseError) {
                 // there was an error
-                n
+
             }
         });
     }
