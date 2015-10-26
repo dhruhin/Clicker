@@ -38,13 +38,13 @@ public class LoginActivity extends AppCompatActivity {
         Log.d("a", "b");
         Firebase myFirebaseRef = new Firebase("https://cse110clicker.firebaseio.com/");
 
-        if(!password.getText().getString().equals(confirmPassword.getText().getString())){
+        if(!password.getText().toString().equals(confirmPassword.getText().toString())){
             return;
         }
-        String semail = email.getText().getString();
-        String spassword = password.getText().getString();
-        String sfirst = first.getText().getString();
-        String slast = last.getText().getString();
+        String semail = email.getText().toString();
+        String spassword = password.getText().toString();
+        String sfirst = first.getText().toString();
+        String slast = last.getText().toString();
         /*
         myFirebaseRef.createUser("bobtony@firebase.com", "correcthorsebatterystaple", new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
