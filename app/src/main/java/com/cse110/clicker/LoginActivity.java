@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
         Firebase.setAndroidContext(this);
 
 
+        //comment
         setContentView(R.layout.activity_login);
         first = (EditText) findViewById(R.id.editFirst);
         last = (EditText) findViewById(R.id.editLast);
