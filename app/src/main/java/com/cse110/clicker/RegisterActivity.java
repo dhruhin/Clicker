@@ -1,14 +1,12 @@
 package com.cse110.clicker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
 import android.widget.EditText;
-import android.widget.Button;
-
 import android.view.View;
-import android.view.View.OnClickListener;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -23,29 +21,16 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         Firebase.setAndroidContext(this);
-        //comment
-        setContentView(R.layout.activity_login);
         first = (EditText) findViewById(R.id.editFirst);
         last = (EditText) findViewById(R.id.editLast);
         email = (EditText) findViewById(R.id.editEmail);
         password = (EditText) findViewById(R.id.editPassword);
         confirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
-        Button register = (Button)findViewById(R.id.registerButton);
-        register.setOnClickListener(new OnClickListener(){
-            @Override
-            public void onClick(View view){
-                attemptLogin();
-            }
-        });
     }
-    private void attemptLogin(){
+    public void register(View view){
         Log.d("a", "b");
-
-        if(password.getText().toString().equals("")){
-            //Password is blank
-            return;
-        }
 
         if(!password.getText().toString().equals(confirmPassword.getText().toString())){
             //Passwords do not match

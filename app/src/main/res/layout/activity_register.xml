@@ -90,6 +90,7 @@
         android:text="Register"
         android:id="@+id/registerButton"
         android:layout_below="@+id/editConfirmPassword"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="register"/>
 
 </RelativeLayout>

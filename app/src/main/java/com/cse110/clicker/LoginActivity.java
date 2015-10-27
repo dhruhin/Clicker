@@ -1,11 +1,15 @@
 package com.cse110.clicker;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
 import android.widget.EditText;
 import android.widget.Button;
+
+import android.content.Intent;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,55 +21,46 @@ import com.firebase.client.FirebaseError;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText first, last, email, password, confirmPassword;
+    private EditText email, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Firebase.setAndroidContext(this);
-        //comment
         setContentView(R.layout.activity_login);
-        first = (EditText) findViewById(R.id.editFirst);
-        last = (EditText) findViewById(R.id.editLast);
-        email = (EditText) findViewById(R.id.editEmail);
-        password = (EditText) findViewById(R.id.editPassword);
-        confirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
-        Button register = (Button)findViewById(R.id.registerButton);
-        register.setOnClickListener(new OnClickListener(){
-            @Override
-            public void onClick(View view){
-                attemptLogin();
-            }
-        });
+
+        Firebase.setAndroidContext(this);
+        email = (EditText) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
     }
-    private void attemptLogin(){
-        Log.d("a", "b");
-
-        if(password.getText().toString().equals("")){
-            //Password is blank
-            return;
-        }
-
-        if(!password.getText().toString().equals(confirmPassword.getText().toString())){
-            //Passwords do not match
-            return;
-        }
-        String semail = email.getText().toString();
-        String spassword = password.getText().toString();
-        String sfirst = first.getText().toString();
-        String slast = last.getText().toString();
-
-        Firebase ref = new Firebase("https://cse110clicker.firebaseio.com");
-        ref.createUser(semail, spassword, new Firebase.ValueResultHandler<Map<String, Object>>() {
+    public void login(View view){
+        Firebase ref = new Firebase("https://cse110clicker.firebaseio.com/");
+        ref.authWithPassword(email.getText().toString(), password.getText().toString(), new Firebase.AuthResultHandler() {
             @Override
-            public void onSuccess(Map<String, Object> result) {
-                System.out.println("Successfully created user account with uid: " + result.get("uid"));
+            public void onAuthenticated(AuthData authData) {
+                Log.e("d","User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
             }
 
             @Override
-            public void onError(FirebaseError firebaseError) {
+            public void onAuthenticationError(FirebaseError firebaseError) {
                 // there was an error
-
+                loginError();
             }
         });
     }
+    public void goToRegister(View view){
+        //load Registration view
+        startActivity(new Intent(this, RegisterActivity.class));
+    }
+    public void loginError(){
+        new AlertDialog.Builder(this)
+                .setTitle("Login Error")
+                .setMessage("Username/password not found")
+                .setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //do nothing when clicked
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
 }
