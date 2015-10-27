@@ -50,16 +50,15 @@ public class RegisterActivity extends AppCompatActivity {
         ref.createUser(semail, spassword, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
-                System.out.println("Successfully created user account with uid: " + result.get("uid"));
-                Firebase user = ref.child("users").child((String)result.get("uid"));
-                user.child("first").setValue(sfirst);
-                user.child("last").setValue(slast);
-                user.child("id").setValue(sid);
                 //stored
                 ref.authWithPassword(semail, spassword, new Firebase.AuthResultHandler() {
                     @Override
                     public void onAuthenticated(AuthData authData) {
                         startActivity(new Intent(RegisterActivity.this, DashboardActivity.class));
+                        Firebase user = ref.child("users").child(authData.getUid());
+                        user.child("first").setValue(sfirst);
+                        user.child("last").setValue(slast);
+                        user.child("id").setValue(sid);
                     }
 
                     @Override
