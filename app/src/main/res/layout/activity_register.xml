@@ -84,12 +84,24 @@
         android:layout_alignEnd="@+id/editPassword"
         android:hint="Confirm Password" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/editID"
+        android:layout_below="@+id/editConfirmPassword"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editFirst"
+        android:layout_alignEnd="@+id/editFirst"
+        android:hint="School Identifier (optional)" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
         android:id="@+id/registerButton"
-        android:layout_below="@+id/editConfirmPassword"
+        android:layout_below="@+id/editID"
         android:layout_centerHorizontal="true"
         android:onClick="register"/>
 

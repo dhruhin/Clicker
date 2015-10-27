@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.cse110.clicker.LoginActivity" >
+        <activity android:name="com.cse110.clicker.DashboardActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.cse110.clicker.RegisterActivity" >
+        </activity>
+        <activity android:name="com.cse110.clicker.LoginActivity" >
         </activity>
     </application>
 
