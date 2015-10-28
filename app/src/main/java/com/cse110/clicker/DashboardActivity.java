@@ -34,9 +34,26 @@ public class DashboardActivity extends AppCompatActivity {
         if (authData == null) {
             // no user authenticated go to login page
             startActivity(new Intent(this, LoginActivity.class));
-        }else{
-            Log.e("a", authData.toString());
+            return;
         }
+
+        ref.child("users").child(authData.getUid()).child("first").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                // do some stuff once
+                Log.e("a", snapshot.toString());
+                if (snapshot.exists()) {
+                    TextView name = (TextView) findViewById(R.id.welcomeView);
+                    name.setText("Welcome " + (String) snapshot.getValue() + "!");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     public void createSession(View view){
@@ -53,11 +70,15 @@ public class DashboardActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     createSessionID();
                 } else {
-                    Long tsLong = System.currentTimeMillis()/1000;
+                    Long tsLong = System.currentTimeMillis() / 1000;
                     String ts = tsLong.toString();
                     Firebase session = ref.child("sessions").child(Integer.toString(sessionID));
                     session.child("timestamp").setValue(ts);
                     session.child("createdBy").setValue(ref.getAuth().getUid());
+
+                    Intent i = new Intent(DashboardActivity.this, CreateSessionActivity.class);
+                    i.putExtra(getResources().getString(R.string.session_id), Integer.toString(sessionID));
+                    startActivity(i);
                 }
             }
 
@@ -79,13 +100,13 @@ public class DashboardActivity extends AppCompatActivity {
 
         input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(5)});
 
-        input.setOnEditorActionListener(new TextView.OnEditorActionListener(){
+        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ( (actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN ))) {
+                if ((actionId == EditorInfo.IME_ACTION_DONE) || ((event.getKeyCode() == KeyEvent.KEYCODE_ENTER) && (event.getAction() == KeyEvent.ACTION_DOWN))) {
                     connectSession(input.getText().toString());
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             }
@@ -98,7 +119,7 @@ public class DashboardActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 // do some stuff once
                 if (snapshot.exists()) {
-                    Log.e("a",snapshot.toString());
+                    Log.e("a", snapshot.toString());
                 } else {
                     //doesn't exist
                 }
@@ -109,5 +130,9 @@ public class DashboardActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void logUserOut(View view){
+        ref.unauth();
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }

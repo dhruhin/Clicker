@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:2:1-26:12
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:3:5-33
 		INJECTED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidMani
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:7:5-24:19
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:7:5-26:19
 MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:22:5-20
 	android:label
@@ -53,6 +53,10 @@ activity#com.cse110.clicker.LoginActivity
 ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:22:9-23:20
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:22:19-48
+activity#com.cse110.clicker.CreateSessionActivity
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:24:9-25:20
+	android:name
+		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:24:19-56
 uses-sdk
 INJECTED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:20:5-43

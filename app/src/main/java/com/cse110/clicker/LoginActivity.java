@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         ref.authWithPassword(email.getText().toString(), password.getText().toString(), new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
-                Log.e("d","User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
+                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
             }
 
             @Override

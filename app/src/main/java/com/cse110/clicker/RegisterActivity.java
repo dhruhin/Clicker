@@ -43,6 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         if(!spassword.equals(scpassword)){
+            alertError("Passwords don't match.");
             return;
         }
 
@@ -54,11 +55,11 @@ public class RegisterActivity extends AppCompatActivity {
                 ref.authWithPassword(semail, spassword, new Firebase.AuthResultHandler() {
                     @Override
                     public void onAuthenticated(AuthData authData) {
-                        startActivity(new Intent(RegisterActivity.this, DashboardActivity.class));
                         Firebase user = ref.child("users").child(authData.getUid());
                         user.child("first").setValue(sfirst);
                         user.child("last").setValue(slast);
                         user.child("id").setValue(sid);
+                        startActivity(new Intent(RegisterActivity.this, DashboardActivity.class));
                     }
 
                     @Override

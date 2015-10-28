@@ -27,6 +27,8 @@
         </activity>
         <activity android:name="com.cse110.clicker.LoginActivity" >
         </activity>
+        <activity android:name="com.cse110.clicker.CreateSessionActivity" >
+        </activity>
     </application>
 
 </manifest>
