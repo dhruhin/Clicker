@@ -16,7 +16,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.cse110.clicker.DashboardActivity" >
+        <activity
+            android:name="com.cse110.clicker.DashboardActivity"
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,6 +30,8 @@
         <activity android:name="com.cse110.clicker.LoginActivity" >
         </activity>
         <activity android:name="com.cse110.clicker.CreateSessionActivity" >
+        </activity>
+        <activity android:name="com.cse110.clicker.JoinSessionActivity" >
         </activity>
     </application>
 

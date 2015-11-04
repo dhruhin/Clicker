@@ -33,7 +33,9 @@ public class DashboardActivity extends AppCompatActivity {
         AuthData authData = ref.getAuth();
         if (authData == null) {
             // no user authenticated go to login page
-            startActivity(new Intent(this, LoginActivity.class));
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
             return;
         }
 
@@ -41,10 +43,9 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 // do some stuff once
-                Log.e("a", snapshot.toString());
                 if (snapshot.exists()) {
                     TextView name = (TextView) findViewById(R.id.welcomeView);
-                    name.setText("Welcome " + (String) snapshot.getValue() + "!");
+                    name.setText("Welcome " + snapshot.getValue() + "!");
 
                 }
             }
@@ -112,14 +113,16 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
     }
-    public void connectSession(String input){
+    public void connectSession(final String input){
         //check if it exists, then join host
         ref.child("sessions").child(input).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 // do some stuff once
                 if (snapshot.exists()) {
-                    Log.e("a", snapshot.toString());
+                    Intent i = new Intent(DashboardActivity.this, JoinSessionActivity.class);
+                    i.putExtra(getResources().getString(R.string.session_id), input);
+                    startActivity(i);
                 } else {
                     //doesn't exist
                 }
