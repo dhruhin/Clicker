@@ -54,12 +54,14 @@ public class CreateSessionActivity extends AppCompatActivity {
                 EditText a2 = ((EditText)findViewById(R.id.editText2));
                 EditText a3 = ((EditText)findViewById(R.id.editText3));
                 EditText a4 = ((EditText)findViewById(R.id.editText4));
+                EditText a5 = ((EditText)findViewById(R.id.editText5));
                 session.child("q").setValue(q.getText().toString());
                 session.child("a").setValue(ans);
                 session.child("a1").setValue(a1.getText().toString());
                 session.child("a2").setValue(a2.getText().toString());
                 session.child("a3").setValue(a3.getText().toString());
                 session.child("a4").setValue(a4.getText().toString());
+                session.child("a5").setValue(a5.getText().toString());
             }
 
             @Override
