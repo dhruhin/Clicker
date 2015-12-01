@@ -13,6 +13,11 @@
     <bool name="abc_config_allowActionMenuItemTextWithIcon">false</bool>
     <bool name="abc_config_closeDialogWhenTouchOutside">true</bool>
     <bool name="abc_config_showMenuShortcutsWhenKeyboardPresent">false</bool>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/res/values/values.xml -->
+    <eat-comment/>
+    <bool name="default_menu_item_clickable">true</bool>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <eat-comment/>
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
     <color name="abc_search_url_text_normal">#7fa87f</color>
     <color name="abc_search_url_text_pressed">@android:color/black</color>
@@ -36,12 +41,21 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/res/values/values.xml -->
+    <eat-comment/>
+    <color name="default_menu_item_title_textColor">@color/droppy_title_color</color>
     <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/res/values/values.xml -->
+    <eat-comment/>
+    <item name="droppy_separator" type="color">#FFBBBBBB</item>
+    <item name="droppy_title_color" type="color">#FF333333</item>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <eat-comment/>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
@@ -88,6 +102,13 @@
     <declare-styleable name="AppCompatTextView"><attr format="reference|boolean" name="textAllCaps"/><attr name="android:textAppearance"/></declare-styleable>
     <declare-styleable name="CompoundButton"><attr name="android:button"/><attr format="color" name="buttonTint"/><attr name="buttonTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="DrawerArrowToggle"><attr format="color" name="color"/><attr format="boolean" name="spinBars"/><attr format="dimension" name="drawableSize"/><attr format="dimension" name="gapBetweenBars"/><attr format="dimension" name="arrowHeadLength"/><attr format="dimension" name="arrowShaftLength"/><attr format="dimension" name="barLength"/><attr format="dimension" name="thickness"/></declare-styleable>
+    <declare-styleable name="Droppy"><attr format="reference" name="droppyPopupStyle"/><attr format="reference" name="droppyMenuStyle"/><attr format="reference" name="droppyMenuSeparatorStyle"/><attr format="reference" name="droppyMenuItemStyle"/><attr format="reference" name="droppyMenuItemTitleStyle"/><attr format="reference" name="droppyMenuItemIconStyle"/></declare-styleable>
+    <declare-styleable name="DroppyMenuContainerView"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:orientation"/></declare-styleable>
+    <declare-styleable name="DroppyMenuItemIconView"><attr name="android:maxWidth"/><attr name="android:maxHeight"/><attr name="android:layout_width"/><attr name="android:layout_gravity"/><attr name="android:layout_weight"/><attr name="android:layout_height"/><attr name="android:layout_marginLeft"/><attr name="android:layout_marginRight"/></declare-styleable>
+    <declare-styleable name="DroppyMenuItemTitleView"><attr name="android:textColor"/><attr name="android:minWidth"/><attr name="android:minHeight"/><attr name="android:layout_height"/><attr name="android:layout_width"/><attr name="android:layout_gravity"/><attr name="android:gravity"/><attr name="android:layout_weight"/></declare-styleable>
+    <declare-styleable name="DroppyMenuItemView"><attr name="android:minWidth"/><attr name="android:minHeight"/><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:clickable"/><attr name="android:orientation"/><attr name="android:gravity"/><attr name="android:paddingTop"/><attr name="android:paddingBottom"/><attr name="android:paddingLeft"/><attr name="android:paddingRight"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="DroppyMenuPopupView"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:background"/></declare-styleable>
+    <declare-styleable name="DroppyMenuSeparatorView"><attr name="android:background"/><attr name="android:layout_height"/><attr name="android:layout_width"/><attr name="android:layout_marginTop"/><attr name="android:layout_marginBottom"/><attr name="android:orientation"/></declare-styleable>
     <declare-styleable name="LinearLayoutCompat"><attr name="android:orientation"/><attr name="android:gravity"/><attr name="android:baselineAligned"/><attr name="android:baselineAlignedChildIndex"/><attr name="android:weightSum"/><attr format="boolean" name="measureWithLargestChild"/><attr name="divider"/><attr name="showDividers"><flag name="none" value="0"/><flag name="beginning" value="1"/><flag name="middle" value="2"/><flag name="end" value="4"/></attr><attr format="dimension" name="dividerPadding"/></declare-styleable>
     <declare-styleable name="LinearLayoutCompat_Layout"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_weight"/><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ListPopupWindow"><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/></declare-styleable>
@@ -169,6 +190,24 @@
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/res/values/values.xml -->
+    <eat-comment/>
+    <dimen name="default_menu_item_icon_marginLeft">5dp</dimen>
+    <dimen name="default_menu_item_icon_marginRight">5dp</dimen>
+    <dimen name="default_menu_item_icon_maxHeight">32dp</dimen>
+    <dimen name="default_menu_item_icon_maxWidth">32dp</dimen>
+    <dimen name="default_menu_item_minHeight">48dp</dimen>
+    <dimen name="default_menu_item_minWidth">150dp</dimen>
+    <dimen name="default_menu_item_paddingBottom">2dp</dimen>
+    <dimen name="default_menu_item_paddingLeft">5dp</dimen>
+    <dimen name="default_menu_item_paddingRight">5dp</dimen>
+    <dimen name="default_menu_item_paddingTop">2dp</dimen>
+    <dimen name="default_menu_item_title_layout_width">0dp</dimen>
+    <dimen name="default_menu_item_title_minHeight">30dp</dimen>
+    <dimen name="default_menu_item_title_minWidth">128dp</dimen>
+    <dimen name="default_menu_separator_height">0.5dp</dimen>
+    <dimen name="default_menu_separator_marginBottom">3dp</dimen>
+    <dimen name="default_menu_separator_marginTop">3dp</dimen>
     <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
@@ -183,6 +222,13 @@
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/res/values/values.xml -->
+    <eat-comment/>
+    <drawable name="default_menu_item_background">@drawable/droppy_list_item_selector</drawable>
+    <drawable name="default_menu_separator_background">@drawable/droppy_separator_background</drawable>
+    <drawable name="default_popup_background">@drawable/bt_bg_popupmenu</drawable>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <eat-comment/>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -1149,6 +1195,63 @@
         <item name="android:minWidth">56dp</item>
         <item name="android:scaleType">center</item>
     </style>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/res/values/values.xml -->
+    <eat-comment/>
+    <style name="Droppy">
+    </style>
+    <style name="Droppy.DroppyMenu">
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="Droppy.DroppyMenuItem">
+        <item name="android:minWidth">120dp</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:background">@drawable/droppy_list_item_selector</item>
+    </style>
+    <style name="Droppy.DroppyMenuItemIcon">
+        <item name="android:maxWidth">32dp</item>
+        <item name="android:maxHeight">32dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">start|center_vertical</item>
+        <item name="android:layout_weight">0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+    </style>
+    <style name="Droppy.DroppyMenuItemTitle">
+        <item name="android:textColor">@color/droppy_title_color</item>
+        <item name="android:minWidth">128dp</item>
+        <item name="android:minHeight">30dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_gravity">end|center_vertical</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="Droppy.DroppyMenuSeparator">
+        <item name="android:background">@drawable/droppy_separator_background</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="Droppy.DroppyPopup">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bt_bg_popupmenu</item>
+    </style>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
 
@@ -1378,6 +1481,17 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/res/values/values.xml -->
+    <eat-comment/>
+    <style name="Theme.DroppyDefaults" parent="android:Theme">
+        <item name="droppyPopupStyle">@style/Droppy.DroppyPopup</item>
+        <item name="droppyMenuStyle">@style/Droppy.DroppyMenu</item>
+        <item name="droppyMenuItemStyle">@style/Droppy.DroppyMenuItem</item>
+        <item name="droppyMenuItemTitleStyle">@style/Droppy.DroppyMenuItemTitle</item>
+        <item name="droppyMenuItemIconStyle">@style/Droppy.DroppyMenuItemIcon</item>
+    </style>
+    <!-- From: file:/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values/values.xml -->
+    <eat-comment/>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>

@@ -24,11 +24,21 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Firebase.setAndroidContext(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
+
+        Firebase ref = new Firebase("https://cse110clicker.firebaseio.com/");
+        AuthData authData = ref.getAuth();
+        if (authData != null) {
+            // no user authenticated go to login page
+            Intent intent = new Intent(this, DashboardActivity.class);
+            startActivity(intent);
+            return;
+        }
     }
     public void login(View view){
         Firebase ref = new Firebase("https://cse110clicker.firebaseio.com/");

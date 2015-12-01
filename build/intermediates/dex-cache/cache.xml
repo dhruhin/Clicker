@@ -2,46 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/Users/dhruhin/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-jvm/2.4.0/558e074f136fee609b8758480ecd00e286595137/firebase-client-jvm-2.4.0.jar"
+        jar="/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="558e074f136fee609b8758480ecd00e286595137">
-        <dex dex="/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/pre-dexed/debug/firebase-client-jvm-2.4.0-d4a5f76ebce53b4c1ee2ef27c8419aa397191c88.jar" />
-    </item>
-    <item
-        jar="/Users/dhruhin/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-client-android/2.4.0/f00bc767918ad9c89e5c13e25706d033a58e13c2/firebase-client-android-2.4.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="f00bc767918ad9c89e5c13e25706d033a58e13c2">
-        <dex dex="/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/pre-dexed/debug/firebase-client-android-2.4.0-d1cb0c40e4df8cd098d13c197bdeb2ff2570318b.jar" />
-    </item>
-    <item
-        jar="/Users/dhruhin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.2.2/285cb9c666f0f0f3dd8a1be04e1f457eb7b15113/jackson-annotations-2.2.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="285cb9c666f0f0f3dd8a1be04e1f457eb7b15113">
-        <dex dex="/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/pre-dexed/debug/jackson-annotations-2.2.2-47348ef476aaf5ac9a609df257789776cc31c072.jar" />
-    </item>
-    <item
-        jar="/Users/dhruhin/.gradle/caches/modules-2/files-2.1/com.firebase/tubesock/0.0.12/6ec0bbd3e161a73ed672284b587fd32309a86d7a/tubesock-0.0.12.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6ec0bbd3e161a73ed672284b587fd32309a86d7a">
-        <dex dex="/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/pre-dexed/debug/tubesock-0.0.12-8461a7f0f5f5f95f0cc92976c1a2e0af3954893a.jar" />
-    </item>
-    <item
-        jar="/Users/dhruhin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.2.2/d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b/jackson-core-2.2.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d20be6a5ddd6f8cfd36ebf6dea329873a1c41f1b">
-        <dex dex="/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/pre-dexed/debug/jackson-core-2.2.2-40aff5e54e8c5494d9563e03e4f3a1213b57a40e.jar" />
-    </item>
-    <item
-        jar="/Users/dhruhin/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.2.2/3c8f6018eaa72d43b261181e801e6f8676c16ef6/jackson-databind-2.2.2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3c8f6018eaa72d43b261181e801e6f8676c16ef6">
-        <dex dex="/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/pre-dexed/debug/jackson-databind-2.2.2-9aeef9ffc6e71778231cc8cf92ca8854f9e0a938.jar" />
+        sha1="d376955a99924ca5eb31ae6cd3abf15796adc1df">
+        <dex dex="/Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/pre-dexed/debug/classes-7271aa4403cb35e0a1fd6e1e43a536e7727037c8.jar" />
     </item>
 
 </items>

@@ -29,8 +29,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="false"
-        android:editable="false"
-        android:hint="First Name" />
+        android:hint="First Name"
+        android:imeOptions="actionNext"
+        android:nextFocusForward="@+id/editLast"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -43,7 +44,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editFirst"
         android:layout_alignEnd="@+id/editFirst"
-        android:hint="Last Name" />
+        android:hint="Last Name"
+        android:imeOptions="actionNext"
+        android:nextFocusForward="@+id/editEmail"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -56,7 +59,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editLast"
         android:layout_alignEnd="@+id/editLast"
-        android:hint="Email" />
+        android:hint="Email"
+        android:imeOptions="actionNext"
+        android:nextFocusForward="@+id/editPassword"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -69,7 +74,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editEmail"
         android:layout_alignEnd="@+id/editEmail"
-        android:hint="Password" />
+        android:hint="Password"
+        android:imeOptions="actionNext"
+        android:nextFocusForward="@+id/editConfirmPassword"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -82,7 +89,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editPassword"
         android:layout_alignEnd="@+id/editPassword"
-        android:hint="Confirm Password" />
+        android:hint="Confirm Password"
+        android:imeOptions="actionNext"
+        android:nextFocusForward="@+id/editID"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -94,7 +103,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/editFirst"
         android:layout_alignEnd="@+id/editFirst"
-        android:hint="School Identifier (optional)" />
+        android:hint="School Identifier (optional)"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:nextFocusForward="@+id/registerButton"/>
 
     <Button
         android:layout_width="wrap_content"

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="# "
-        android:id="@+id/sessionIDView"
+        android:id="@+id/progressText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -22,6 +22,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Created by"
         android:id="@+id/creator"
-        android:layout_below="@+id/sessionIDView"
+        android:layout_below="@+id/progressText"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/answerQuestions"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

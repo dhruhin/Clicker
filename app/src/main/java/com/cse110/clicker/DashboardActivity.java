@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,25 +20,23 @@ import com.firebase.client.Firebase;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.shehabic.droppy.DroppyClickCallbackInterface;
+import com.shehabic.droppy.DroppyMenuItem;
+import com.shehabic.droppy.DroppyMenuPopup;
+
+import java.util.ArrayList;
 
 
 public class DashboardActivity extends AppCompatActivity {
     Firebase ref;
+    ArrayList<String> sessionList = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        Firebase.setAndroidContext(this);
         ref = new Firebase("https://cse110clicker.firebaseio.com/");
         AuthData authData = ref.getAuth();
-        if (authData == null) {
-            // no user authenticated go to login page
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(intent);
-            return;
-        }
 
         ref.child("users").child(authData.getUid()).child("first").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -46,8 +45,49 @@ public class DashboardActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     TextView name = (TextView) findViewById(R.id.welcomeView);
                     name.setText("Welcome " + snapshot.getValue() + "!");
-
                 }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+        Button anchor = (Button) findViewById(R.id.manageSessions);
+
+        final DroppyMenuPopup.Builder droppyBuilder = new DroppyMenuPopup.Builder(this, anchor);
+
+        droppyBuilder.setOnClick(new DroppyClickCallbackInterface() {
+            @Override
+            public void call(View v, int id) {
+                Intent i = new Intent(DashboardActivity.this, CreateSessionActivity.class);
+                i.putExtra(getResources().getString(R.string.session_id), sessionList.get(id));
+                startActivity(i);
+            }
+        });
+
+        ref.child("users").child(authData.getUid()).child("sessions").orderByValue().limitToLast(10).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                droppyBuilder.addMenuItem(new DroppyMenuItem(dataSnapshot.getKey()));
+                droppyBuilder.build();
+                sessionList.add(dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -76,6 +116,9 @@ public class DashboardActivity extends AppCompatActivity {
                     Firebase session = ref.child("sessions").child(Integer.toString(sessionID));
                     session.child("timestamp").setValue(ts);
                     session.child("createdBy").setValue(ref.getAuth().getUid());
+
+                    Firebase user = ref.child("users").child(ref.getAuth().getUid()).child("sessions");
+                    user.child(Integer.toString(sessionID)).setValue(ts);
 
                     Intent i = new Intent(DashboardActivity.this, CreateSessionActivity.class);
                     i.putExtra(getResources().getString(R.string.session_id), Integer.toString(sessionID));
@@ -120,7 +163,7 @@ public class DashboardActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 // do some stuff once
                 if (snapshot.exists()) {
-                    Intent i = new Intent(DashboardActivity.this, JoinSessionActivity.class);
+                    Intent i = new Intent(DashboardActivity.this, AnswerQuestionActivity.class);
                     i.putExtra(getResources().getString(R.string.session_id), input);
                     startActivity(i);
                 } else {
