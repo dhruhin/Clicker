@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -54,7 +55,8 @@ public class CreateQuestionActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
                     //add after session stuff
                     size = (int) snapshot.getChildrenCount();
-                    loadQuestion(size);
+                    currentQuestion = size;
+                    loadQuestion();
                 } else {
                     //doesn't exist
                 }
@@ -66,8 +68,8 @@ public class CreateQuestionActivity extends AppCompatActivity {
             }
         });
     }
-    public void loadQuestion(final int i){
-        Firebase session = ref.child("questions").child(sessionID).child("question"+i);
+    public void loadQuestion(){
+        Firebase session = ref.child("questions").child(sessionID).child("question"+currentQuestion);
         session.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -82,7 +84,6 @@ public class CreateQuestionActivity extends AppCompatActivity {
                     a4.setText(snapshot.child("a4").getValue().toString());
                     a5.setText(snapshot.child("a5").getValue().toString());
                     group.check(group.getChildAt(Integer.parseInt(snapshot.child("a").getValue().toString())-1).getId());
-                    currentQuestion = i;
                     updateProgress();
                 } else {
                     //doesn't exist
@@ -97,12 +98,31 @@ public class CreateQuestionActivity extends AppCompatActivity {
     }
     public void updateProgress(){
         progress.setText("Question "+currentQuestion+" of "+size);
+        if(currentQuestion==1&&size==1){
+            Button next = (Button) findViewById(R.id.nextButton);
+            next.setVisibility(View.INVISIBLE);
+        }else if(currentQuestion==size){
+            Button next = (Button) findViewById(R.id.nextButton);
+            next.setText("x");
+            next.setVisibility(View.VISIBLE);
+        }else{
+            Button next = (Button) findViewById(R.id.nextButton);
+            next.setText("→");
+            next.setVisibility(View.VISIBLE);
+        }
+        if(currentQuestion==1){
+            Button previous = (Button) findViewById(R.id.previousButton);
+            previous.setVisibility(View.INVISIBLE);
+        }else{
+            Button previous = (Button) findViewById(R.id.previousButton);
+            previous.setVisibility(View.VISIBLE);
+        }
     }
     public void newQuestion(View view) {
-        saveQuestion(true);
+        saveQuestion(true, false);
     }
     public void doneEdit(View view){
-        saveQuestion(false);
+        saveQuestion(false, true);
     }
     public void clearEditTexts(){
         q.getEditableText().clear();
@@ -112,7 +132,7 @@ public class CreateQuestionActivity extends AppCompatActivity {
         a4.getEditableText().clear();
         a5.getEditableText().clear();
     }
-    public void saveQuestion(final boolean clear){
+    public void saveQuestion(final boolean nextQuestion, final boolean end){
         int answer = 0;
         for(int i = 0; i < group.getChildCount();i++) {
             RadioButton button = (RadioButton)group.getChildAt(i);
@@ -133,19 +153,46 @@ public class CreateQuestionActivity extends AppCompatActivity {
                 session.child("a3").setValue(a3.getText().toString());
                 session.child("a4").setValue(a4.getText().toString());
                 session.child("a5").setValue(a5.getText().toString());
-                if(clear){
+                if(nextQuestion){
                     clearEditTexts();
                     currentQuestion++;
                     size++;
                     updateProgress();
-                }else{
-
+                    saveQuestion(false, false);
+                }
+                if(end){
+                    finish();
                 }
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
+            }
+        });
+    }
+    public void goLeft (View view){
+        if(currentQuestion>1) {
+            currentQuestion--;
+            loadQuestion();
+        }
+    }
+    public void goRight(View view){
+        if(currentQuestion<size) {
+            currentQuestion++;
+            loadQuestion();
+        }else if(currentQuestion==size&&size!=1){
+            deleteQuestion();
+        }
+    }
+    public void deleteQuestion(){
+        Firebase question = ref.child("questions").child(sessionID).child("question"+currentQuestion);
+        question.removeValue(new Firebase.CompletionListener() {
+            @Override
+            public void onComplete(FirebaseError firebaseError, Firebase firebase) {
+                currentQuestion--;
+                size--;
+                loadQuestion();
             }
         });
     }

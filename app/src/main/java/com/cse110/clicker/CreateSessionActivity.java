@@ -22,7 +22,7 @@ public class CreateSessionActivity extends AppCompatActivity {
         session.setText("Session ID: "+sessionID);
     }
     public void startSession(View view) {
-        Intent i = new Intent(this, CreateQuestionActivity.class);
+        Intent i = new Intent(this, HandleSessionActivity.class);
         i.putExtra(getResources().getString(R.string.session_id), sessionID);
         startActivity(i);
     }

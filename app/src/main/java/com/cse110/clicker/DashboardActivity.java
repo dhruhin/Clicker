@@ -37,7 +37,10 @@ public class DashboardActivity extends AppCompatActivity {
 
         ref = new Firebase("https://cse110clicker.firebaseio.com/");
         AuthData authData = ref.getAuth();
-
+        if(authData == null){
+            finish();
+        }
+        Log.d("a",authData.getUid());
         ref.child("users").child(authData.getUid()).child("first").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {

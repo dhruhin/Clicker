@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:2:1-30:12
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:2:1-31:12
 	package
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:3:5-33
 		INJECTED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml
@@ -18,10 +18,12 @@ ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidMani
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:7:5-28:19
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:7:5-29:19
 MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:22:5-20
 MERGED from [com.shehabic.droppy:Droppy:0.2.5.2] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/AndroidManifest.xml:11:5-14:19
+MERGED from [com.jjoe64:graphview:4.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.jjoe64/graphview/4.0.1/AndroidManifest.xml:11:5-12:19
+MERGED from [com.android.support:support-v4:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:10:9-41
 	android:supportsRtl
@@ -33,11 +35,11 @@ MERGED from [com.shehabic.droppy:Droppy:0.2.5.2] /Users/dhruhin/AndroidStudioPro
 	android:theme
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:12:9-40
 activity#com.cse110.clicker.DashboardActivity
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:13:9-64
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:13:9-55
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:13:19-52
 activity#com.cse110.clicker.RegisterActivity
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:14:9-63
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:14:9-54
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:14:19-51
 activity#com.cse110.clicker.LoginActivity
@@ -57,26 +59,32 @@ ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidMani
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:21:27-74
 activity#com.cse110.clicker.CreateSessionActivity
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:24:9-68
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:24:9-59
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:24:19-56
 activity#com.cse110.clicker.JoinSessionActivity
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:25:9-66
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:25:9-57
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:25:19-54
 activity#com.cse110.clicker.AnswerQuestionActivity
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:26:9-69
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:26:9-60
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:26:19-57
 activity#com.cse110.clicker.CreateQuestionActivity
-ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:27:9-69
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:27:9-60
 	android:name
 		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:27:19-57
+activity#com.cse110.clicker.HandleSessionActivity
+ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:28:9-68
+	android:name
+		ADDED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml:28:19-56
 uses-sdk
 INJECTED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:20:5-43
 MERGED from [com.shehabic.droppy:Droppy:0.2.5.2] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.shehabic.droppy/Droppy/0.2.5.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.jjoe64:graphview:4.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.jjoe64/graphview/4.0.1/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-v4:23.0.1] /Users/dhruhin/AndroidStudioProjects/Clicker/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/dhruhin/AndroidStudioProjects/Clicker/app/src/main/AndroidManifest.xml

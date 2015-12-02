@@ -31,6 +31,7 @@
         <activity android:name="com.cse110.clicker.JoinSessionActivity" />
         <activity android:name="com.cse110.clicker.AnswerQuestionActivity" />
         <activity android:name="com.cse110.clicker.CreateQuestionActivity" />
+        <activity android:name="com.cse110.clicker.HandleSessionActivity" />
     </application>
 
 </manifest>

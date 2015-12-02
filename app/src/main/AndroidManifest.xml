@@ -10,8 +10,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DashboardActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity
             android:name=".LoginActivity"
             android:noHistory="true">
@@ -21,10 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateSessionActivity"></activity>
-        <activity android:name=".JoinSessionActivity"></activity>
-        <activity android:name=".AnswerQuestionActivity"></activity>
-        <activity android:name=".CreateQuestionActivity"></activity>
+        <activity android:name=".CreateSessionActivity" />
+        <activity android:name=".JoinSessionActivity" />
+        <activity android:name=".AnswerQuestionActivity" />
+        <activity android:name=".CreateQuestionActivity" />
+        <activity android:name=".HandleSessionActivity"></activity>
     </application>
 
 </manifest>

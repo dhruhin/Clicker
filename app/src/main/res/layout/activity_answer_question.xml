@@ -29,15 +29,17 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:lines="4"
-        android:gravity="center" />
+        android:gravity="center"
+        android:visibility="invisible" />
 
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/questionView">
+        android:layout_below="@+id/questionView"
+        android:id="@+id/radioGroup"
+        android:visibility="invisible">
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -74,5 +76,29 @@
             android:id="@+id/answerButton5"
             android:checked="false" />
     </RadioGroup>
+
+    <TextView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Waiting for a question to be selected..."
+        android:id="@+id/timerView"
+        android:gravity="center"
+        android:layout_below="@+id/radioGroup"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/radioGroup"
+        android:layout_alignEnd="@+id/radioGroup" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/submitAnswer"
+        android:nestedScrollingEnabled="false"
+        android:onClick="submitAns"
+        android:visibility="invisible"
+        android:layout_below="@+id/timerView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
