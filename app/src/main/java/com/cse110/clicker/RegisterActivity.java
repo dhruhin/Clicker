@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        final Firebase ref = new Firebase("https://cse110clicker.firebaseio.com");
+        final Firebase ref = new Firebase(getResources().getString(R.string.firebase));
         ref.createUser(semail, spassword, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {

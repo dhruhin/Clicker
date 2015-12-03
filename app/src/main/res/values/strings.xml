@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Clicker</string>
     <string name="session_id">SESSION_ID</string>
+    <string name="firebase">https://cse110clicker.firebaseio.com/</string>
 </resources>

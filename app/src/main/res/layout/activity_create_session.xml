@@ -10,11 +10,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Session"
-        android:id="@+id/button4"
+        android:text="Start a Session"
+        android:id="@+id/sessionButton"
         android:layout_below="@+id/edit"
         android:layout_centerHorizontal="true"
-        android:onClick="startSession" />
+        android:onClick="startSession"
+        android:visibility="invisible" />
 
     <Button
         android:layout_width="wrap_content"
@@ -33,4 +34,14 @@
         android:id="@+id/sessionView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Export"
+        android:id="@+id/exportButton"
+        android:layout_below="@+id/sessionButton"
+        android:layout_centerHorizontal="true"
+        android:onClick="exportData"
+        android:visibility="invisible" />
 </RelativeLayout>

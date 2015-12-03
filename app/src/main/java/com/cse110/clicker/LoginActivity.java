@@ -21,6 +21,7 @@ import com.firebase.client.FirebaseError;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
+    Firebase ref;
     private EditText email, password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
 
         Firebase.setAndroidContext(this);
-        Firebase ref = new Firebase("https://cse110clicker.firebaseio.com/");
+        ref = new Firebase(getResources().getString(R.string.firebase));
         AuthData authData = ref.getAuth();
         if (authData != null) {
             // no user authenticated go to login page
@@ -42,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     public void login(View view){
-        Firebase ref = new Firebase("https://cse110clicker.firebaseio.com/");
         ref.authWithPassword(email.getText().toString(), password.getText().toString(), new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {

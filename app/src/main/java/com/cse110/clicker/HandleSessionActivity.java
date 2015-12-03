@@ -13,13 +13,21 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.List;
 
 public class HandleSessionActivity extends AppCompatActivity {
     String sessionID;
@@ -30,12 +38,13 @@ public class HandleSessionActivity extends AppCompatActivity {
     boolean isRunning = false;
     CountDownTimer ctimer;
     ColorStateList oldColors;
+    GraphView graph;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handle_session);
 
-        ref = new Firebase("https://cse110clicker.firebaseio.com/");
+        ref = new Firebase(getResources().getString(R.string.firebase));
 
         Intent i = getIntent();
         sessionID = i.getStringExtra(getResources().getString(R.string.session_id));
@@ -43,6 +52,7 @@ public class HandleSessionActivity extends AppCompatActivity {
         progress = (TextView) findViewById(R.id.progressText);
         timer = (TextView) findViewById(R.id.timerView);
         oldColors =  ((TextView) findViewById(R.id.answerView1)).getTextColors();
+        graph = (GraphView) findViewById(R.id.graph);
         loadSession();
     }
     public void loadSession() {
@@ -90,6 +100,10 @@ public class HandleSessionActivity extends AppCompatActivity {
                     ((TextView)(group.getChildAt(highlight))).setTextColor(oldColors);
                     highlight = Integer.parseInt(snapshot.child("a").getValue().toString())-1;
                     ((TextView)(group.getChildAt(highlight))).setTextColor(Color.GREEN);
+                    if(graph.getVisibility()==View.VISIBLE){
+                        group.setVisibility(View.VISIBLE);
+                        graph.setVisibility(View.GONE);
+                    }
                     updateProgress();
 
                 } else {
@@ -162,6 +176,7 @@ public class HandleSessionActivity extends AppCompatActivity {
         });
         ((Button) findViewById(R.id.timerButton)).setText("Start");
         ((Button) findViewById(R.id.extendButton)).setVisibility(View.GONE);
+        openGraph();
     }
     public void updateTimer(long seconds){
         if(seconds<0) {
@@ -174,6 +189,10 @@ public class HandleSessionActivity extends AppCompatActivity {
             ctimer.cancel();
             emptyTimer();
             return;
+        }
+        if(graph.getVisibility()==View.VISIBLE){
+            group.setVisibility(View.VISIBLE);
+            graph.setVisibility(View.GONE);
         }
         ((Button) findViewById(R.id.timerButton)).setText("Stop");
         ((Button) findViewById(R.id.extendButton)).setVisibility(View.VISIBLE);
@@ -222,5 +241,76 @@ public class HandleSessionActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void openGraph(){
+        Firebase session = ref.child("answers").child(sessionID).child("question"+currentQuestion);
+        session.addListenerForSingleValueEvent(new ValueEventListener() {
+            int a1 = 0, a2 = 0, a3 = 0, a4 = 0, a5 = 0;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("a1").exists()){
+                    a1 = (int)dataSnapshot.child("a1").getChildrenCount();
+                }
+                if(dataSnapshot.child("a2").exists()){
+                    a2 = (int)dataSnapshot.child("a2").getChildrenCount();
+                }
+                if(dataSnapshot.child("a3").exists()){
+                    a3 = (int)dataSnapshot.child("a3").getChildrenCount();
+                }
+                if(dataSnapshot.child("a4").exists()){
+                    a4 = (int)dataSnapshot.child("a4").getChildrenCount();
+                }
+                if(dataSnapshot.child("a5").exists()){
+                    a5 = (int)dataSnapshot.child("a5").getChildrenCount();
+                }
+                setupGraph(a1, a2, a3, a4, a5);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
+    private void loadGraph(List<int[]> data) {
+
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(new DataPoint[]{
+                new DataPoint(data.get(0)[0], data.get(0)[1]),
+                new DataPoint(data.get(1)[0], data.get(1)[1]),
+                new DataPoint(data.get(2)[0], data.get(2)[1]),
+                new DataPoint(data.get(3)[0], data.get(3)[1]),
+                new DataPoint(data.get(4)[0], data.get(4)[1]),
+                new DataPoint(data.get(5)[0], data.get(5)[1]),
+                new DataPoint(data.get(6)[0], data.get(6)[1])
+        });
+        graph.addSeries(series);
+        series.setSpacing(20);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(6);
+
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter.setHorizontalLabels(new String[]{"", "A", "B", "C", "D", "E", ""});
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+        graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.valueOf("NONE"));
+    }
+    public void setupGraph(int a1, int a2, int a3, int a4, int a5){
+        group.setVisibility(View.GONE);
+        graph.setVisibility(View.VISIBLE);
+        List<int[]> data = new ArrayList<int[]>();
+        data.add(new int[]{0,0});
+
+        // second element from a-e refers to value to be loaded from total from database
+        data.add(new int[]{1,a1}); //a
+        data.add(new int[]{2,a2}); //b
+        data.add(new int[]{3,a3}); //c
+        data.add(new int[]{4,a4}); //d
+        data.add(new int[]{5,a5}); //e
+        // end of a-e
+
+        data.add(new int[]{6,0});
+        graph.removeAllSeries();
+        loadGraph(data);
     }
 }

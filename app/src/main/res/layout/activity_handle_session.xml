@@ -32,12 +32,22 @@
         android:gravity="center"
         android:textSize="18dp" />
 
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:id="@+id/graph"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_below="@+id/questionView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/answersView"
-        android:layout_below="@+id/questionView"
+        android:layout_below="@+id/graph"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 

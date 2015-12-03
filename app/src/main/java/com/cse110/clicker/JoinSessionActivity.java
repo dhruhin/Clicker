@@ -21,7 +21,7 @@ public class JoinSessionActivity extends AppCompatActivity {
         TextView sessionView = (TextView) findViewById(R.id.progressText);
         sessionView.setText(sessionID);
 
-        ref = new Firebase("https://cse110clicker.firebaseio.com/");
+        ref = new Firebase(getResources().getString(R.string.firebase));
         loadSession(sessionID);
     }
     private void loadSession(final String sessionID){

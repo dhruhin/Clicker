@@ -32,4 +32,6 @@ dependencies {
     compile 'com.firebase:firebase-client-android:2.4.0+'
     compile 'com.shehabic.droppy:Droppy:0.2.5.2@aar'
     compile 'com.jjoe64:graphview:4.0.1'
+    compile files('/Users/dhruhin/AndroidStudioProjects/Clicker/libs/opencsv-3.6.jar')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

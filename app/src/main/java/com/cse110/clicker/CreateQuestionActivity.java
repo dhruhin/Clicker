@@ -35,7 +35,7 @@ public class CreateQuestionActivity extends AppCompatActivity {
 
         group = (RadioGroup) findViewById(R.id.radioGroup);
 
-        ref = new Firebase("https://cse110clicker.firebaseio.com/");
+        ref = new Firebase(getResources().getString(R.string.firebase));
         loadSession();
 
         a1 = (EditText)findViewById(R.id.editText1);

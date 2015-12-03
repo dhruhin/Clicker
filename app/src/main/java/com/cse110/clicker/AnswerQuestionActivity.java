@@ -15,9 +15,14 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.helper.StaticLabelsFormatter;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
 
-import java.io.Console;
-import java.util.Dictionary;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnswerQuestionActivity extends AppCompatActivity {
     String sessionID;
@@ -29,12 +34,13 @@ public class AnswerQuestionActivity extends AppCompatActivity {
     TextView questionView;
     RadioButton a1,a2,a3,a4,a5;
     Button submit;
+    GraphView graph;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_question);
 
-        ref = new Firebase("https://cse110clicker.firebaseio.com/");
+        ref = new Firebase(getResources().getString(R.string.firebase));
 
         Intent i = getIntent();
         sessionID = i.getStringExtra(getResources().getString(R.string.session_id));
@@ -43,6 +49,7 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         timer = (TextView)findViewById(R.id.timerView);
         submit = (Button)findViewById(R.id.submitAnswer);
         progress = (TextView) findViewById(R.id.progressText);
+        graph = (GraphView) findViewById(R.id.graph);
         loadSession();
     }
     public void loadSession() {
@@ -129,10 +136,10 @@ public class AnswerQuestionActivity extends AppCompatActivity {
             public void onFinish() {
                 emptyTimer();
                 submitAns(null);
+                openGraph();
             }
         }.start();
     }
-
     public void updateTimer(long seconds){
         if(seconds<0) {
             seconds = 0;
@@ -168,8 +175,51 @@ public class AnswerQuestionActivity extends AppCompatActivity {
 
             }
         });
+        submit.setVisibility(View.INVISIBLE);
     }
     public void updateProgress(){
         progress.setText("Question "+currentQuestion+" of "+size);
+    }
+
+
+    public void openGraph(){
+
+        List<int[]> data = new ArrayList<int[]>();
+        data.add(new int[]{0,0});
+
+        // second element from a-e refers to value to be loaded from total from database
+        data.add(new int[]{1,1}); //a
+        data.add(new int[]{2,5}); //b
+        data.add(new int[]{3,3}); //c
+        data.add(new int[]{4, 2}); //d
+        data.add(new int[]{5,6}); //e
+        // end of a-e
+
+        data.add(new int[]{6,0});
+
+        loadGraph(data);
+    }
+
+    private void loadGraph(List<int[]> data) {
+        BarGraphSeries<DataPoint> series = new BarGraphSeries<DataPoint>(new DataPoint[]{
+                new DataPoint(data.get(0)[0], data.get(0)[1]),
+                new DataPoint(data.get(1)[0], data.get(1)[1]),
+                new DataPoint(data.get(2)[0], data.get(2)[1]),
+                new DataPoint(data.get(3)[0], data.get(3)[1]),
+                new DataPoint(data.get(4)[0], data.get(4)[1]),
+                new DataPoint(data.get(5)[0], data.get(5)[1]),
+                new DataPoint(data.get(6)[0], data.get(6)[1])
+        });
+        graph.addSeries(series);
+        series.setSpacing(20);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(0);
+        graph.getViewport().setMaxX(6);
+
+        StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
+        staticLabelsFormatter.setHorizontalLabels(new String[]{"", "A", "B", "C", "D", "E", ""});
+        graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
+
+        graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.valueOf("NONE"));
     }
 }
