@@ -1,25 +1,11 @@
 package com.cse110.clicker;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
+import junit.framework.TestCase;
 
 /**
- * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
+ * Created by dhruhin on 12/4/15.
  */
-public class ApplicationTest extends ApplicationTestCase<Application> {
-    public ApplicationTest(){
-        super(Application.class);
-        try {
-            checkUnitTests();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void checkUnitTests() throws Exception{
-        testRandomSessionID();
-        testConvertIntToChar();
-        testReturnPercentage();
-    }
+public class CreateSessionActivityTest extends TestCase {
 
     public void testReturnPercentage() throws Exception {
         CreateSessionActivity act = new CreateSessionActivity();
@@ -57,18 +43,4 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         assertEquals(c, '?');
     }
 
-    public void testRandomSessionID() throws Exception {
-        DashboardActivity act = new DashboardActivity();
-        int i;
-        i = act.randomSessionID();
-        assertTrue(i<100000 && i >=0);
-        i = act.randomSessionID();
-        assertTrue(i<100000 && i >=0);
-        i = act.randomSessionID();
-        assertTrue(i<100000 && i >=0);
-        i = act.randomSessionID();
-        assertTrue(i<100000 && i >=0);
-        i = act.randomSessionID();
-        assertTrue(i<100000 && i >=0);
-    }
 }

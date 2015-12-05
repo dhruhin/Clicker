@@ -40,7 +40,7 @@ public class DashboardActivity extends AppCompatActivity {
         if(authData == null){
             finish();
         }
-        Log.d("a",authData.getUid());
+
         ref.child("users").child(authData.getUid()).child("first").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -50,7 +50,6 @@ public class DashboardActivity extends AppCompatActivity {
                     name.setText("Welcome " + snapshot.getValue() + "!");
                 }
             }
-
             @Override
             public void onCancelled(FirebaseError firebaseError) {
 
@@ -104,9 +103,11 @@ public class DashboardActivity extends AppCompatActivity {
         //generate random up to 5 digit number and store as key (string) in server and add timestamp
         createSessionID();
     }
-
+    public int randomSessionID(){
+        return (int)(Math.random()*99999)+1;
+    }
     public void createSessionID(){
-        final int sessionID = (int)(Math.random()*99999)+1;
+        final int sessionID = randomSessionID();
         ref.child("sessions").child(Integer.toString(sessionID)).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
